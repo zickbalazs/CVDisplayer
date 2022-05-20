@@ -1,9 +1,63 @@
 header{
-    
+    margin-left:3rem;
+    margin-bottom:2rem;
+    margin-top:2rem;
+    text-align: center;
 }
-
+body{
+    color:rgb(61, 61, 61);
+}
 main{
+    margin:auto;
     width:210mm;
     height:297mm;
     border:1px solid black;
+}
+#personal, #schools, #languages{
+    margin-bottom: 1rem;
+}
+#loc, #phone, #mail, #born{
+    padding-left:1rem;
+}
+h2{
+    padding:2rem;
+    background-color: rgba(78, 193, 201, 0.712);
+    margin: 0;
+    color:black;
+}
+h3{
+    padding-left:0.5rem;
+    margin:1rem;    
+    margin-left:0.2rem;
+}
+#languages{
+    display:flex;
+    flex-flow:row wrap;
+}
+#languages>div{
+    margin:10px;
+}
+p{
+    margin: 0.3rem;
+}
+hr:first-of-type{
+    margin: 0;
+
+}
+hr{
+    margin-top: 1rem;
+    margin-bottom:1rem;
+}
+#aboutme, #schools, #languages{
+    padding-left:1.25em;
+}
+footer{
+    background-color: black;
+    color:white;
+    margin-top:2rem;
+    padding:1rem;
+    text-align: center;
+}
+footer>p{
+    margin: 0;
 }

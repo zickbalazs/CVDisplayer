@@ -5,6 +5,8 @@ async function load(){
     document.querySelector('main').innerHTML = await (await fetch('/admin/dashboard.html')).text();
     document.querySelector('#SchoolBtn').addEventListener('click', AddSchool);
     document.querySelector('#LanguageBtn').addEventListener('click', AddLanguage);
+    document.querySelector('#SchoolRMBtn').addEventListener('click', RemoveSchool);
+    document.querySelector('#LanguageRMBtn').addEventListener('click', RemoveLanguage);
     document.querySelector('#done').addEventListener('click', ()=>{
         if (confirm("Biztosan kész van?")){
             StoreData();
@@ -12,23 +14,29 @@ async function load(){
         }
     })
     LoadData();
+
 }
 function LoadData(){
     if (localStorage.getItem('CVCreator')!=null){
         let data = JSON.parse(localStorage.getItem('CVCreator'));
-
+        document.querySelector('#name').value=data.name;
+        document.querySelector('#born').value=data.birth;
+        document.querySelector('#address').value=data.address;
+        document.querySelector('#phone').value=data.tel;
+        document.querySelector('#email').value=data.email;
+        document.querySelector('#aboutme').value=data.skills;
     }
 }
 function RemoveSchool(){
     if (schoolsN>1){
+        document.querySelector('#schools').removeChild(document.querySelector(`#_S${schoolsN}`));
         schoolsN--;
-
     }
 }
 function RemoveLanguage(){
     if (languagesN>1){
+        document.querySelector('#languages').removeChild(document.querySelector('#_L'+languagesN));
         languagesN--;
-
     }
 }
 function AddSchool(){
@@ -89,6 +97,7 @@ function GetLanguages(){
 function StoreData(){
     let data = {
         "name":document.querySelector('#name').value,
+        "birth":document.querySelector('#born').value,
         "address":document.querySelector('#address').value,
         "tel":document.querySelector('#phone').value,
         "email":document.querySelector('#email').value,
