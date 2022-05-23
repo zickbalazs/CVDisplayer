@@ -9,12 +9,24 @@ async function load(){
     document.querySelector('#LanguageRMBtn').addEventListener('click', RemoveLanguage);
     document.querySelector('#done').addEventListener('click', ()=>{
         if (confirm("Biztosan kész van?")){
-            StoreData();
-            window.location.href="/";
+            if (FullyFilled()){
+                StoreData();
+                window.location.href="/";
+            }
+            else{
+                alert('Nincs minden adat kitöltve!');
+            }
         }
     })
     LoadData();
-
+}
+function FullyFilled(){
+    return document.querySelector('#name').value!=""&&document.querySelector('#born').value!=""
+        &&document.querySelector('#address').value!=""&&document.querySelector('#phone').value!=""
+        &&document.querySelector('#email').value!=""&&document.querySelector('#aboutme').value!=""
+        &&document.querySelector('#school1').value!=""&&document.querySelector('#language1').value!=""
+        &&document.querySelector('#school1DateB').value!=""&&document.querySelector('#school1DateE').value!=""
+        &&document.querySelector('#language1Cert').value!="";
 }
 function LoadData(){
     if (localStorage.getItem('CVCreator')!=null){
@@ -106,6 +118,5 @@ function StoreData(){
         "skills":document.querySelector('#aboutme').value
     }
     localStorage.setItem('CVCreator', JSON.stringify(data));
-    alert('sikeres feltöltés');
 }
 load();
